@@ -1,0 +1,52 @@
+{
+  "_说明": "此文件用于自定义 pending_waiter 插件的行为。修改后无需重启，重载插件即可生效。",
+
+  "timeout": 60,
+  "timeout_unit": "秒",
+  "timeout_说明": "等待用户续文的超时时间，超时后插件会发送 timeout_message 并结束等待。",
+
+  "skip_prefixes": ["/", "#", "!", "。"],
+  "skip_prefixes_说明": "以此列表中的任意字符开头的消息会被跳过，不触发等待逻辑。",
+
+  "keywords": [
+    "我[想看看][一想查查考考考虑思]",
+    "让[你我][想看看][一想查查考考]",
+    "等[一等一下一哈会会儿]",
+    "稍等",
+    "怎么[说讲]呢",
+    "这个嘛",
+    "(嗯|唔|额|呃)\\s*[。.…]*$",
+    "好问题",
+    "good question"
+  ],
+  "keywords_说明": "关键词正则列表，匹配其中任意一个后才会走 LLM 二次判断。每条是一个正则表达式。",
+
+  "acknowledgments": {
+    "看": "嗯，你慢慢看。",
+    "想": "嗯，你说。",
+    "考虑": "好，你考虑。",
+    "查": "嗯，你查。",
+    "等": "嗯，等你。",
+    "稍": "好，不着急。",
+    "_default": "嗯，我在听。"
+  },
+  "acknowledgments_说明": "简短确认回复。根据用户消息中包含的关键字匹配合适的回复，_default 为兜底。",
+
+  "judge_prompt": "判断用户消息是否表示ta话没说完（需要思考、查询、组织语言）。\n用户消息：{text}\n只回答一个字：是 或 否",
+  "judge_prompt_说明": "发送给 LLM 的判断 prompt。{text} 会被替换为用户消息。建议保持简短。",
+
+  "judge_system_prompt": "你是一个判断助手。只回答是或否。",
+  "judge_system_prompt_说明": "判断 prompt 的系统提示词。",
+
+  "merge_template": "{original}\n——接着：{continuation}",
+  "merge_template_说明": "合并原文和续文的格式模板。{original} = 原文，{continuation} = 续文。",
+
+  "timeout_message": "嗯？还在吗？没回话我先忙别的了。",
+  "timeout_message_说明": "等待超时后发送的消息。",
+
+  "empty_message": "嗯？你说。",
+  "empty_message_说明": "用户发送空消息时的提示。",
+
+  "fallback_message": "嗯，你接着说。",
+  "fallback_message_说明": "LLM 调用失败时的兜底回复。"
+}

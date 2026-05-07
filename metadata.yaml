@@ -1,0 +1,13 @@
+name: pending_waiter
+display_name: 话没说完？我等你
+desc: 识别"我想想""我看看"等未完信号，回复简短确认并等待续文，合并后调用 LLM 统一回复。
+short_desc: 识别未完信号，等你说完再回。
+version: 1.0.0
+author: soulfish
+astrbot_version: ">=4.5.7"
+tags:
+  - 对话
+  - 等待
+  - 体验优化
+support_platforms:
+  - all
